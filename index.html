@@ -10,7 +10,7 @@
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 body{
@@ -69,14 +69,19 @@ button{
   top:70px;
 }
 
-.meme{
+/* SUCCESS ANIMATION */
+.success{
   display:none;
 }
 
-.meme img{
-  width:100%;
-  margin-top:15px;
-  border-radius:15px;
+.hearts{
+  font-size:2rem;
+  animation: float 1s infinite alternate;
+}
+
+@keyframes float{
+  from{transform:translateY(0);}
+  to{transform:translateY(-15px);}
 }
 </style>
 </head>
@@ -85,16 +90,17 @@ button{
 
 <div class="container">
   <h1 id="name"></h1>
-  <h2>Will you be my Valentine? 💍❤️</h2>
+  <h2>Will you be mine forever? ❤️</h2>
 
   <div class="buttons" id="btnBox">
     <button id="yes" onclick="yesClick()">YES 😍</button>
     <button id="no">NO 🙃</button>
   </div>
 
-  <div class="meme" id="meme">
-    <h2>HAHA I KNEW IT 😌💖</h2>
-    <img src="https://media.tenor.com/2roX3uxz_68AAAAC/love-happy.gif">
+  <div class="success" id="success">
+    <h2>YAYYY 😭💖</h2>
+    <div class="hearts">💖💖💖💖💖</div>
+    <p style="margin-top:10px;">I knew it 😌❤️</p>
   </div>
 </div>
 
@@ -107,9 +113,8 @@ document.getElementById("name").innerText = name + " 💕";
 const noBtn = document.getElementById("no");
 const box = document.getElementById("btnBox");
 
-// WORKS ON MOBILE + DESKTOP
-noBtn.addEventListener("touchstart", moveNo);
 noBtn.addEventListener("mouseover", moveNo);
+noBtn.addEventListener("touchstart", moveNo);
 
 function moveNo(){
   const x = Math.random() * (box.offsetWidth - noBtn.offsetWidth);
@@ -120,8 +125,7 @@ function moveNo(){
 
 function yesClick(){
   document.getElementById("btnBox").style.display = "none";
-  document.querySelector("h2").innerText = "She said YES 😭💘";
-  document.getElementById("meme").style.display = "block";
+  document.getElementById("success").style.display = "block";
 }
 </script>
 
