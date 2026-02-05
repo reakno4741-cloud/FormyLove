@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine 💖</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body{
+  height:100vh;
+  width:100vw;
+  background: linear-gradient(135deg,#ff4ecd,#ff758c);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+}
+
+.container{
+  background:#fff;
+  width:90%;
+  max-width:400px;
+  padding:25px;
+  border-radius:20px;
+  text-align:center;
+  box-shadow:0 20px 40px rgba(0,0,0,0.2);
+  animation: pop 0.6s ease;
+}
+
+@keyframes pop{
+  from{transform:scale(0.8);opacity:0;}
+  to{transform:scale(1);opacity:1;}
+}
+
+h1{
+  font-size:1.6rem;
+  margin-bottom:10px;
+}
+
+h2{
+  font-size:1.2rem;
+  margin-bottom:20px;
+  color:#ff4ecd;
+}
+
+.buttons{
+  position:relative;
+  height:120px;
+}
+
+button{
+  padding:12px 20px;
+  font-size:1rem;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+}
+
+#yes{
+  background:#ff4ecd;
+  color:white;
+}
+
+#no{
+  background:#ddd;
+  position:absolute;
+}
+
+.meme{
+  display:none;
+}
+
+.meme img{
+  width:100%;
+  border-radius:15px;
+  margin-top:15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="card">
+  <h1 id="name"></h1>
+  <h2>Will you be my Valentine? 💍❤️</h2>
+
+  <div class="buttons">
+    <button id="yes" onclick="yesClick()">YES 😍</button>
+    <button id="no" onmouseover="moveNo()">NO 😝</button>
+  </div>
+
+  <div class="meme" id="meme">
+    <h2>YAYYY 🥹💖</h2>
+    <img src="https://i.imgur.com/2yAfJ6B.gif" alt="happy meme">
+  </div>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const name = params.get("name") || "Hey";
+
+document.getElementById("name").innerText =
+  name + " 😌";
+
+function moveNo(){
+  const btn = document.getElementById("no");
+  const x = Math.random() * 250;
+  const y = Math.random() * 80;
+  btn.style.left = x + "px";
+  btn.style.top = y + "px";
+}
+
+function yesClick(){
+  document.querySelector(".buttons").style.display="none";
+  document.querySelector("h2").innerText="I knew it 😎💘";
+  document.getElementById("meme").style.display="block";
+}
+</script>
+
+</body>
+</html>
